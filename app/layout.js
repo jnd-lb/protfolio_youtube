@@ -1,3 +1,4 @@
+import ActiveSectionContext from '@/context/ActiveSectionContext'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -10,8 +11,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html className="scroll-smooth" lang="en">
+      <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+      </head>
+      <body className={inter.className+ " overflow-x-hidden"}>
+         <ActiveSectionContext>
+            {children}
+         </ActiveSectionContext>
+        </body>
     </html>
   )
 }

@@ -2,26 +2,88 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+
+/* Toggle Button */
+
+.toggle span{
+    transition: all 0.5s ease; 
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.toggle span:nth-child(1){
+    margin-top:-0.3rem;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.toggle span:nth-child(3){
+    margin-top:0.3rem;
+}
+
+.toggle.active span{
+    transform-origin: 0rem;
+    margin-top: 0;
+}
+
+.toggle.active span:nth-child(1){
+    rotate: 45deg;
+}
+
+.toggle.active span:nth-child(2){
+   opacity: 0;
+}
+
+.toggle.active span:nth-child(3){
+    rotate: -45deg;
+ }
+
+
+ /*Slick*/
+
+ .slick-dots{
+    --color:#6d28d9;
+}
+
+.slick-dots li{
+    margin: 0 8px !important;
+ }
+
+ .slick-dots li button:before{
+    width:10px !important;
+    height: 10px !important;
+    
+    content: "" !important;
+    border: 1px solid var(--color);
+    border-radius: 9999px;
+    opacity: 1 !important;
+ }
+
+ .slick-dots li.slick-active button:before{
+        background: var(--color);
+ }
+
+
+ /* Testimonials People images*/
+ .testimonial-image{
+    opacity: 0.7;
+    filter: blur(1.5px);
+    animation: zoominout 10s infinite forwards;
+
+    animation-delay: calc(var(--animation-delay) * 1.5s);
+   }
+   
+
+@keyframes zoominout {
+   0%{
+       filter: blur(1.5px);
+       scale: 1;
+   }
+   
+   50%{
+       scale: 1.4;    
+       filter: blur(1px);
+   }
+   
+   100%{
+       scale: 1; 
+       filter: blur(1.5px);
+   }
 }
